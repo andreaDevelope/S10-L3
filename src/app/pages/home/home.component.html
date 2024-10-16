@@ -1,11 +1,18 @@
-@if (productsImg.length > 0) {
+@if (products.length > 0) {
 <ngb-carousel>
   <ng-template ngbSlide *ngFor="let pr of products">
     <div class="picsum-img-wrapper">
-      <img [src]="pr.images[0]" alt="Random first slide" />
+      <img
+        (click)="addToCart(pr)"
+        [src]="pr.thumbnail"
+        alt="Random first slide"
+        title="aggiungi al carrello"
+      />
     </div>
     <div class="carousel-caption">
-      <h3>{{ pr.brand }}</h3>
+      <h3 title="aggiungi ai preferiti" (click)="addFauvorites(pr)">
+        {{ pr.title }}
+      </h3>
       <p>{{ pr.description }}</p>
     </div>
   </ng-template>
